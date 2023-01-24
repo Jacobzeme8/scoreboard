@@ -1,16 +1,20 @@
-let teamOneScore = 0;
-let teamTwoScore = 0;
+
 
 let teams = []
+let team = {}
+let teamNumber;
 
 
 function addNewTeam(){
   let newTeam = {
     score: 0,
-    name: `Team${teams.length +1}`
+    teamNumber: teams.length +1,
+    name: `Team ${teams.length + 1}`
   }
 
-  teams.push(newTeam)
+  let team = newTeam
+
+  teams.push(team)
   drawScore()
 
 }
@@ -20,13 +24,13 @@ function addNewTeam(){
 
 // drawScore()
 
-function scoreOne() {
-  teamOneScore++
+function scoreOne(teamNumber) {
+  teams[teamNumber-1].team.score++
   drawScore()
 }
 
 function scoreTwo() {
-  teamTwoScore++
+
   drawScore()
 }
 
@@ -41,7 +45,7 @@ function drawScore() {
         </div>
         <div class="col-3">
           <p>Score: ${team.score} </p>
-          <button class="btn btn-primary btn-lg p-1" onclick="scoreOne()">Goal!</button>
+          <button class="btn btn-primary btn-lg p-1" onclick="scoreOne("${teamNumber}")">Goal!</button>
           <button class="btn btn-success btn-lg p-1" onclick="scoreTwo()">Double Goal!</button>
           <button class="btn btn-danger btn-lg p-1" onclick="penalty()">Penalty</button>
         </div>`})
